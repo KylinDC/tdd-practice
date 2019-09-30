@@ -11,7 +11,7 @@ class CapacityTest {
     @Test
     void should_save_bag_if_there_is_empty_locker() {
         Cabinet cabinet = new Cabinet(10);
-        Ticket ticket = cabinet.save(new Bag(), LockerSize.BIG);
+        Ticket ticket = cabinet.save(new Bag(BagSize.BIG), LockerSize.BIG);
 
         assertNotNull(ticket);
     }
@@ -19,11 +19,11 @@ class CapacityTest {
     @Test
     void should_throw_if_cabinet_is_full() {
         Cabinet cabinet = new Cabinet(1);
-        cabinet.save(new Bag(), LockerSize.BIG);
+        cabinet.save(new Bag(BagSize.BIG), LockerSize.BIG);
 
         assertThrows(
             InsufficientLockersException.class,
-            () -> cabinet.save(new Bag(), LockerSize.BIG),
+            () -> cabinet.save(new Bag(BagSize.BIG), LockerSize.BIG),
             "Insufficient empty lockers."
         );
     }
