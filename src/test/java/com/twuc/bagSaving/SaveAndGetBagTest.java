@@ -8,7 +8,7 @@ class SaveAndGetBagTest {
     @Test
     void should_get_a_ticket_when_saving_a_bag() {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
-        Ticket ticket = cabinet.save(new Bag());
+        Ticket ticket = cabinet.save(new Bag(), LockerSize.BIG);
 
         assertNotNull(ticket);
     }
@@ -17,14 +17,14 @@ class SaveAndGetBagTest {
     void should_notify_when_put_nothing() {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
         assertThrows(IllegalArgumentException.class, () ->
-            cabinet.save(null), "Please at least put something here.");
+            cabinet.save(null, LockerSize.BIG), "Please at least put something here.");
     }
 
     @Test
     void should_get_corresponded_bag_given_ticket() {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
         Bag bag = new Bag();
-        Ticket ticket = cabinet.save(bag);
+        Ticket ticket = cabinet.save(bag, LockerSize.BIG);
 
         Bag sameBag = cabinet.getBag(ticket);
 
@@ -47,7 +47,7 @@ class SaveAndGetBagTest {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
         Cabinet anotherCabinet = new Cabinet(Integer.MAX_VALUE);
 
-        Ticket ticket = cabinet.save(new Bag());
+        Ticket ticket = cabinet.save(new Bag(), LockerSize.BIG);
 
         assertThrows(IllegalArgumentException.class, () ->
             anotherCabinet.getBag(ticket), "Invalid ticket.");
@@ -65,7 +65,7 @@ class SaveAndGetBagTest {
     void should_throw_if_ticket_is_used() {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
         Bag bag = new Bag();
-        Ticket ticket = cabinet.save(bag);
+        Ticket ticket = cabinet.save(bag, LockerSize.BIG);
         cabinet.getBag(ticket);
 
         assertThrows(IllegalArgumentException.class, () ->

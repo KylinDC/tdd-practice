@@ -16,7 +16,7 @@ public class Cabinet {
         this.capacity = capacity;
     }
 
-    public Ticket save(Bag bag) {
+    public Ticket save(Bag bag, LockerSize size) {
         if (capacity <= lockers.size()) {
             throw new InsufficientLockersException("Insufficient empty lockers.");
         }
