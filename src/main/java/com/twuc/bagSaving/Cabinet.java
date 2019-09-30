@@ -17,6 +17,10 @@ public class Cabinet {
     }
 
     public Ticket save(Bag bag, LockerSize size) {
+        if (size == null) {
+            throw new IllegalArgumentException("Please specify locker size");
+        }
+
         if (capacity <= lockers.size()) {
             throw new InsufficientLockersException("Insufficient empty lockers.");
         }
