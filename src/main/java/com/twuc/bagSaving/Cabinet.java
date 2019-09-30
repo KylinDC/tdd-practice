@@ -6,6 +6,9 @@ import java.util.Map;
 public class Cabinet {
     private Map<Ticket, Bag> lockers = new HashMap<>();
 
+    public Cabinet(int capacity) {
+    }
+
     public Ticket save(Bag bag) {
         if (bag == null) {
             throw new IllegalArgumentException("Please at least put something here.");
