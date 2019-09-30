@@ -31,4 +31,15 @@ class SaveBagTest {
         assertNotNull(sameBag);
         assertSame(bag, sameBag);
     }
+
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    void should_throw_if_no_ticket_is_provided() {
+        Cabinet cabinet = new Cabinet();
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> cabinet.getBag(null),
+            "Please use your ticket");
+    }
 }

@@ -9,6 +9,9 @@ public class Cabinet {
     }
 
     public Bag getBag(Ticket ticket) {
+        if (ticket == null) {
+            throw new IllegalArgumentException("Please use your ticket.");
+        }
         return ticket.getBag();
     }
 }
