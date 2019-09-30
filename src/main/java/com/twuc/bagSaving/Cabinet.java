@@ -5,6 +5,10 @@ public class Cabinet {
         if (bag == null) {
             throw new IllegalArgumentException("Please at least put something here.");
         }
-        return new Ticket();
+        return new Ticket(bag);
+    }
+
+    public Bag getBag(Ticket ticket) {
+        return ticket.getBag();
     }
 }
