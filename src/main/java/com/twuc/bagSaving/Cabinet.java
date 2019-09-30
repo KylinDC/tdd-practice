@@ -24,6 +24,9 @@ public class Cabinet {
             throw new IllegalArgumentException("Invalid Ticket.");
         }
 
-        return lockers.get(ticket);
+        Bag bag = lockers.get(ticket);
+        lockers.remove(ticket);
+
+        return bag;
     }
 }

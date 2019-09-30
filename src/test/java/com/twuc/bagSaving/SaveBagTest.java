@@ -2,8 +2,6 @@ package com.twuc.bagSaving;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class SaveBagTest {
@@ -34,7 +32,6 @@ class SaveBagTest {
         assertSame(bag, sameBag);
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     void should_throw_if_no_ticket_is_provided() {
         Cabinet cabinet = new Cabinet();
@@ -52,9 +49,8 @@ class SaveBagTest {
 
         Ticket ticket = cabinet.save(new Bag());
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            anotherCabinet.getBag(ticket);
-        }, "Invalid ticket.");
+        assertThrows(IllegalArgumentException.class, () ->
+            anotherCabinet.getBag(ticket), "Invalid ticket.");
     }
 
     @Test
@@ -62,8 +58,17 @@ class SaveBagTest {
         Cabinet cabinet = new Cabinet();
         Ticket ticket = new Ticket();
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            cabinet.getBag(ticket);
-        }, "Invalid ticket.");
+        assertThrows(IllegalArgumentException.class, () -> cabinet.getBag(ticket), "Invalid ticket.");
+    }
+
+    @Test
+    void should_throw_if_ticket_is_used() {
+        Cabinet cabinet = new Cabinet();
+        Bag bag = new Bag();
+        Ticket ticket = cabinet.save(bag);
+        cabinet.getBag(ticket);
+
+        assertThrows(IllegalArgumentException.class, () ->
+            cabinet.getBag(ticket), "Invalid ticket.");
     }
 }
