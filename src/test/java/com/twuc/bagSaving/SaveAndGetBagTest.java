@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SaveBagTest {
+class SaveAndGetBagTest {
     @Test
     void should_get_a_ticket_when_saving_a_bag() {
         Cabinet cabinet = new Cabinet(Integer.MAX_VALUE);
