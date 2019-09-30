@@ -30,10 +30,8 @@ class CapacityTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
-    void should_throw_if_capacity_is_less_than_1(int invalidCapacity) {
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> new Cabinet(invalidCapacity)
-        );
+    void should_throw_when_capacity_is_less_1(int capacity) {
+        assertThrows(IllegalArgumentException.class, () ->
+            new Cabinet(capacity));
     }
 }

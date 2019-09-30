@@ -1,5 +1,5 @@
 package com.twuc.bagSaving;
 
 public enum BagSize {
-    BIG;
+    BIG, HUGE, MINI, MEDIUM, SMALL;
 }
